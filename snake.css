@@ -1,0 +1,208 @@
+:root {
+    --neon-green: #39FF14;
+    --neon-pink: #FF2D7B;
+    --neon-cyan: #00F0FF;
+    --neon-yellow: #FFE600;
+    --bg: #0a0a12;
+    --panel: #12121e;
+    --border: #1e1e32;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+    background: var(--bg);
+    font-family: 'Outfit', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #fff;
+    overflow: hidden;
+}
+
+body::after {
+    content: '';
+    position: fixed; top:0; left:0; width:100%; height:100%;
+    background: repeating-linear-gradient(0deg, rgba(0,0,0,0.06) 0px, rgba(0,0,0,0.06) 1px, transparent 1px, transparent 3px);
+    pointer-events: none;
+    z-index: 100;
+}
+
+.game-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    animation: fadeIn 0.8s ease both;
+}
+
+@keyframes fadeIn {
+    from { opacity:0; transform:translateY(20px); }
+    to { opacity:1; transform:translateY(0); }
+}
+
+.title {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 28px;
+    color: var(--neon-green);
+    text-shadow: 0 0 10px var(--neon-green);
+}
+
+/* (keep the rest EXACTLY the same as your original CSS) */
+:root {
+    --neon-green: #39FF14;
+    --neon-pink: #FF2D7B;
+    --neon-cyan: #00F0FF;
+    --neon-yellow: #FFE600;
+    --bg: #0a0a12;
+    --panel: #12121e;
+    --border: #1e1e32;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+body {
+    background: var(--bg);
+    font-family: 'Outfit', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #fff;
+    overflow: hidden;
+}
+/* CRT scanline overlay */
+body::after {
+    content: '';
+    position: fixed; top:0; left:0; width:100%; height:100%;
+    background: repeating-linear-gradient(0deg, rgba(0,0,0,0.06) 0px, rgba(0,0,0,0.06) 1px, transparent 1px, transparent 3px);
+    pointer-events: none;
+    z-index: 100;
+}
+.game-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    animation: fadeIn 0.8s ease both;
+}
+@keyframes fadeIn { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+
+.title {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 28px;
+    color: var(--neon-green);
+    text-shadow: 0 0 10px var(--neon-green), 0 0 40px rgba(57,255,20,0.3);
+    letter-spacing: 6px;
+}
+
+.stats-bar {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+.stat {
+    text-align: center;
+}
+.stat-label {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 8px;
+    color: #555;
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+}
+.stat-value {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 18px;
+    color: var(--neon-cyan);
+    text-shadow: 0 0 8px rgba(0,240,255,0.4);
+}
+.stat-value.high { color: var(--neon-yellow); text-shadow: 0 0 8px rgba(255,230,0,0.4); }
+
+.canvas-wrap {
+    position: relative;
+    border: 2px solid var(--neon-green);
+    box-shadow: 0 0 20px rgba(57,255,20,0.15), inset 0 0 40px rgba(0,0,0,0.5);
+    background: var(--panel);
+}
+canvas { display: block; }
+
+/* Overlay screens */
+.overlay {
+    position: absolute; top:0; left:0; width:100%; height:100%;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    background: rgba(10,10,18,0.92);
+    z-index: 10;
+    gap: 16px;
+    transition: opacity 0.3s;
+}
+.overlay.hidden { opacity:0; pointer-events:none; }
+.overlay h2 {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 20px;
+    color: var(--neon-pink);
+    text-shadow: 0 0 15px rgba(255,45,123,0.5);
+}
+.overlay .final-score {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 14px;
+    color: var(--neon-cyan);
+}
+.overlay p {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 9px;
+    color: #666;
+    margin-top: 10px;
+}
+.play-btn {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 11px;
+    padding: 14px 32px;
+    background: transparent;
+    border: 2px solid var(--neon-green);
+    color: var(--neon-green);
+    cursor: pointer;
+    letter-spacing: 2px;
+    transition: all 0.3s;
+    margin-top: 10px;
+}
+.play-btn:hover {
+    background: var(--neon-green);
+    color: var(--bg);
+    box-shadow: 0 0 20px rgba(57,255,20,0.4);
+}
+
+.controls-hint {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 8px;
+    color: #444;
+    letter-spacing: 1px;
+}
+
+/* Mobile controls */
+.mobile-controls {
+    display: none;
+    grid-template-areas: ". up ." "left down right";
+    grid-template-columns: repeat(3, 60px);
+    grid-template-rows: repeat(2, 60px);
+    gap: 6px;
+}
+.mobile-controls button {
+    font-size: 20px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    color: var(--neon-green);
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background 0.15s;
+}
+.mobile-controls button:active { background: rgba(57,255,20,0.15); }
+.m-up { grid-area: up; }
+.m-down { grid-area: down; }
+.m-left { grid-area: left; }
+.m-right { grid-area: right; }
+
+@media (max-width: 600px) {
+    .mobile-controls { display: grid; }
+    canvas { max-width: 90vw; max-height: 90vw; }
+}

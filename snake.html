@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SNAKE — Arcade</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="snake.css">
+</head>
+
+<body>
+<div class="game-wrapper">
+    <div class="title">SNAKE</div>
+
+    <div class="stats-bar">
+        <div class="stat"><div class="stat-label">SCORE</div><div class="stat-value" id="score">0</div></div>
+        <div class="stat"><div class="stat-label">HIGH SCORE</div><div class="stat-value high" id="highscore">0</div></div>
+        <div class="stat"><div class="stat-label">LEVEL</div><div class="stat-value" id="level">1</div></div>
+    </div>
+
+    <div class="canvas-wrap">
+        <canvas id="game" width="400" height="400"></canvas>
+
+        <div class="overlay" id="startScreen">
+            <h2 style="color:var(--neon-green);">SNAKE</h2>
+            <p>Use arrow keys or WASD to move</p>
+            <button class="play-btn" onclick="startGame()">START GAME</button>
+        </div>
+
+        <div class="overlay hidden" id="gameOverScreen">
+            <h2>GAME OVER</h2>
+            <div class="final-score" id="finalScore">Score: 0</div>
+            <p>Press SPACE or click to retry</p>
+            <button class="play-btn" onclick="startGame()">PLAY AGAIN</button>
+        </div>
+    </div>
+
+    <div class="controls-hint">ARROW KEYS / WASD TO MOVE</div>
+
+    <div class="mobile-controls">
+        <button class="m-up" ontouchstart="setDir(0,-1)">▲</button>
+        <button class="m-left" ontouchstart="setDir(-1,0)">◄</button>
+        <button class="m-down" ontouchstart="setDir(0,1)">▼</button>
+        <button class="m-right" ontouchstart="setDir(1,0)">►</button>
+    </div>
+</div>
+
+<script src="snake.js"></script>
+</body>
+</html>
